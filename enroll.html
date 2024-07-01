@@ -3,7 +3,17 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - CityScapes Landing Page Responsive HTML Template</title>
+  <title>CityScapes Landing Page Responsive HTML Template</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet" href="https://rawgit.com/Jesus-E-Rodriguez/cityscapes-landing-page/master/css/styles.css">
+  <!-- Include Owl Carousel CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
   <style>
     /* If you wish to remove the astonish.js file, then also be sure to remove these styles. */
     .astonish {
@@ -18,7 +28,6 @@
       .animated {
         visibility: visible;
       }
-
     }
 
     ul {
@@ -48,15 +57,138 @@
     body {
       height: 100%;
     }
-  </style>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
-  <link rel='stylesheet' href='https://rawgit.com/Jesus-E-Rodriguez/cityscapes-landing-page/master/css/styles.css'>
 
+    .button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 200px;
+      width: 300px;
+      box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+      /* Adjusted for better visibility */
+      border-radius: 10px;
+      background: #1a1a1a;
+      /* Dark background for the container */
+    }
+
+    .contact-button {
+      background: #000000a1;
+      /* Solid green color */
+      border: 2px solid #FFFFFF;
+      /* White border */
+      color: white;
+      padding: 3vh 5vw;
+      font-size: 20pt;
+      font-weight: bold;
+      text-transform: uppercase;
+      border-radius: 25px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      /* Slight shadow for a 3D effect */
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      letter-spacing: 1px;
+    }
+
+    .contact-button::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300%;
+      height: 300%;
+      background: rgba(255, 255, 255, 0.15);
+      transition: all 0.6s ease;
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(0);
+    }
+
+    .contact-button:hover::before {
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .contact-button:hover {
+      background: #000000be;
+      /* Slightly darker green on hover */
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+      /* Enhanced shadow on hover */
+      transform: translateY(-3px);
+      /* Slight upward movement on hover */
+    }
+
+    .contact-button:active {
+      transform: translateY(1px);
+      /* Slight downward movement on click */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      /* Reduced shadow on click */
+    }
+
+    /* Additional styles for the carousel */
+    .custom-carousel .item {
+      background-size: cover;
+      background-position: center;
+      height: 400px;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.4s ease-in-out;
+    }
+
+    .custom-carousel .item-desc {
+      padding: 20px;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      transition: all 0.4s ease-in-out;
+    }
+
+    .custom-carousel .item-desc h3 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .custom-carousel .item-desc p {
+      margin: 10px 0 0;
+    }
+
+    .game-section {
+      padding: 60px 50px;
+    }
+
+    .line-title {
+      margin-bottom: 48px;
+      padding-bottom: 16px;
+      font-size: 20px;
+      line-height: 28px;
+      font-weight: 700;
+      position: relative;
+      text-transform: capitalize;
+    }
+
+    .line-title::before,
+    .line-title::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 4px;
+      border-radius: 2px;
+    }
+
+    .line-title::before {
+      width: 100%;
+      background: #f2f2f2;
+    }
+
+    .line-title::after {
+      width: 32px;
+      background: #e73700;
+    }
+  </style>
 </head>
 
 <body>
@@ -78,18 +210,65 @@
   </nav>
 
   <!-- Main header -->
-  <div>
-    <!-- First replaceble image -->
-    <img class="img-absolute" src="img/Jul20_23_1226068272.jpg" alt="City 1">
+  <header style="height: 50vh;">
+    <img class="img-absolute" src="img\450678-black-dark-texture.jpg" style="" alt="City 1">
     <div class="wrapper astonish animated fadeInDown">
       <h1><strong>enroll</strong></h1>
     </div>
-  </div>
+
+    <div>
+      <a href="#" style="text-decoration: none;color: white; margin-left: 1vw; margin-right: 1vw; margin-top: 4%;"><button class="contact-button">Python</button></a>
+      <a href="#" style="text-decoration: none;color: white; margin-left: 1vw; margin-right: 1vw; margin-top: 4%"><button class="contact-button">Machine Learning</button></a>
+    </div>
+  </header>
+
+  <!-- CAROSOUL GOES HERE -->
+  <section class="game-section">
+    <h2 class="line-title">Trending Games</h2>
+    <div class="owl-carousel custom-carousel owl-theme">
+      <div class="item" style="background-image: url(https://www.yudiz.com/codepen/expandable-animated-card-slider/dota-2.jpg);">
+        <div class="item-desc">
+          <h3>Dota 2</h3>
+          <p>Dota 2 is a multiplayer online battle arena by Valve. The game is a sequel to Defense of the Ancients, which was a community-created mod for Blizzard Entertainment's Warcraft III.</p>
+        </div>
+      </div>
+      <div class="item" style="background-image: url(https://www.yudiz.com/codepen/expandable-animated-card-slider/winter-3.jpg);">
+        <div class="item-desc">
+          <h3>The Witcher 3</h3>
+          <p>The Witcher 3 is a multiplayer online battle arena by Valve. The game is a sequel to Defense of the Ancients, which was a community-created mod for Blizzard Entertainment's Warcraft III.</p>
+        </div>
+      </div>
+      <div class="item" style="background-image: url(https://www.yudiz.com/codepen/expandable-animated-card-slider/rdr-2.jpg);">
+        <div class="item-desc">
+          <h3>RDR 2</h3>
+          <p>RDR 2 is a multiplayer online battle arena by Valve. The game is a sequel to Defense of the Ancients, which was a community-created mod for Blizzard Entertainment's Warcraft III.</p>
+        </div>
+      </div>
+      <div class="item" style="background-image: url(https://www.yudiz.com/codepen/expandable-animated-card-slider/pubg.jpg);">
+        <div class="item-desc">
+          <h3>PUBG Mobile</h3>
+          <p>PUBG 2 is a multiplayer online battle arena by Valve. The game is a sequel to Defense of the Ancients, which was a community-created mod for Blizzard Entertainment's Warcraft III.</p>
+        </div>
+      </div>
+      <div class="item" style="background-image: url(https://www.yudiz.com/codepen/expandable-animated-card-slider/fortnite.jpg);">
+        <div class="item-desc">
+          <h3>Fortnite</h3>
+          <p>Battle royale where 100 players fight to be the last person standing. which was a community-created mod for Blizzard Entertainment's Warcraft III.</p>
+        </div>
+      </div>
+      <div class="item" style="background-image: url(https://www.yudiz.com/codepen/expandable-animated-card-slider/far-cry-5.jpg);">
+        <div class="item-desc">
+          <h3>Far Cry 5</h3>
+          <p>Far Cry 5 is a 2018 first-person shooter game developed by Ubisoft. which was a community-created mod for Blizzard Entertainment's Warcraft III.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Main footer -->
   <footer>
     <div class="content-wrapper-sm display-flex-between">
-      <!-- Easily replaceble copyright information -->
+      <!-- Easily replaceable copyright information -->
       <small>Your copyright 2017.</small>
 
       <!-- Make sure to edit the links so that they go to your social media. -->
@@ -102,11 +281,38 @@
         </ul>
       </div>
     </div>
-
-
   </footer>
-  <!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+
+  <!-- Include jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Include Owl Carousel JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $(".custom-carousel").owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        dots: true,
+        responsive: {
+          0: {
+            items: 1
+          },
+          600: {
+            items: 3
+          },
+          1000: {
+            items: 5
+          }
+        }
+      });
+
+      $(".custom-carousel .item").click(function () {
+        $(".custom-carousel .item").not($(this)).removeClass("active");
+        $(this).toggleClass("active");
+      });
+    });
+  </script>
   <script src='https://rawgit.com/Jesus-E-Rodriguez/cityscapes-landing-page/master/js/astonish.js'></script>
   <script src='https://rawgit.com/Jesus-E-Rodriguez/cityscapes-landing-page/master/js/menu.js'></script>
   <script src='https://rawgit.com/Jesus-E-Rodriguez/cityscapes-landing-page/master/js/nav.js'></script>
