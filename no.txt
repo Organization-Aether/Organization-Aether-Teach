@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - CityScapes Landing Page Responsive HTML Template</title>
+  <style>
+    /* If you wish to remove the astonish.js file, then also be sure to remove these styles. */
+    .astonish {
+      visibility: visible;
+    }
+
+    @media (min-width: 768px) {
+      .astonish {
+        visibility: hidden;
+      }
+
+      .animated {
+        visibility: visible;
+      }
+
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      padding: 10px;
+      margin: 5px 0;
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    li:hover {
+      transform: translateY(-5px);
+    }
+    * {
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+  </style>
+  <style>
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); /* Adjusted for better visibility */
+    border-radius: 10px;
+    background: #1a1a1a; /* Dark background for the container */
+}
+
+.contact-button {
+    background: #000000a1; /* Solid green color */
+    border: 2px solid #FFFFFF; /* White border */
+    color: white;
+    padding: 4vh 15vw;
+    font-size: 20pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 25px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Slight shadow for a 3D effect */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 1px;
+}
+
+.contact-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.15);
+    transition: all 0.6s ease;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+}
+
+.contact-button:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.contact-button:hover {
+    background: #000000be; /* Slightly darker green on hover */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+    transform: translateY(-3px); /* Slight upward movement on hover */
+}
+
+.contact-button:active {
+    transform: translateY(1px); /* Slight downward movement on click */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Reduced shadow on click */
+}
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
+  <link rel='stylesheet' href='https://rawgit.com/Jesus-E-Rodriguez/cityscapes-landing-page/master/css/styles.css'>
+
+</head>
+<body>
+  <!-- partial:index.partial.html -->
+  <!-- Main Navigation -->
+  <nav class="main-nav" id="main-nav">
+    <div class="content-wrapper-sm">
+      <a href="index.html" class="navbar-brand">Aether</a>
+      <div id="menu-button">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="enroll.html">Enroll</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  <header>
+    <img class="img-absolute" src="img\digital-abstract-3d-render-pattern-minimal-art-black-2560x1080-7124.jpg" alt="City 1">
+    <div class="wrapper astonish animated fadeInDown">
+      <a href="" style="text-decoration: none;color: white;"><button class="contact-button">Contact</button></a>
+</div>
+</header>
+
+  <footer>
+    <div class="content-wrapper-sm display-flex-between">
+      <!-- Easily replaceble copyright information -->
+      <small>Your copyright 2017.</small>
+
+      <!-- Make sure to edit the links so that they go to your social media. -->
+      <div class="social-links">
+        <ul>
+          <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+          <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+          <li><a href="#"><i class="fa fa-snapchat-square" aria-hidden="true"></i></a></li>
+          <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+  <script src='https://rawgit.com/Jesus-E-Rodriguez/cityscapes-landing-page/master/js/astonish.js'></script>
+  <script src='https://rawgit.com/Jesus-E-Rodriguez/cityscapes-landing-page/master/js/menu.js'></script>
+  <script src='https://rawgit.com/Jesus-E-Rodriguez/cityscapes-landing-page/master/js/nav.js'></script>
+  <script src='https://rawgit.com/Jesus-E-Rodriguez/cityscapes-landing-page/master/js/scroll.js'></script>
+</body>
+
+</html>
