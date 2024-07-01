@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <title>CodePen - CityScapes Landing Page Responsive HTML Template</title>
   <style>
-    
     /* If you wish to remove the astonish.js file, then also be sure to remove these styles. */
     .astonish {
       visibility: visible;
@@ -66,25 +65,518 @@
   </nav>
 
   <!-- Inspo by https://codepen.io/bobbykorec/pen/wgPeyK -->
-<section class="main">
-  <div class="left">
-    <img src="https://loremflickr.com/320/240" />
-  </div>
-  <div class="right">
-      <div class="text-section white_bg">
-        <h2 class="header">About me</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipiscing, elit tristique quisque libero mi dis, <strong>etiam nascetur</strong> dui pulvinar lacinia. Curabitur nam imperdiet volutpat primis sollicitudin venenatis, quam ut dapibus ornare varius rutrum, massa risus sagittis parturient laoreet. Vivamus ultrices ac interdum cras euismod blandit mauris lacinia quisque dictum felis class viverra, risus mi vitae tempor senectus phasellus dui imperdiet ultricies himenaeos aliquet.</p>
+  <section class="main">
+    <div class="left" >
+      <header>
+        <style>
+          /* variables */
+          :root {
+            --bg-body: hsl(225deg 9.5238095238% 8.2352941176%);
+          }
+
+          .green {
+            --bg-btn: #00ccff;
+          }
+
+          .red {
+            --bg-btn: #00ccff;
+          }
+         
+
+          .box {
+            position: relative;
+            width: 40vw;
+            height: 6em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            border-radius: 1.3em;
+            transition: box-shadow 0.8s;
+            cursor: pointer;
+          }
+
+          .box>h2>a {
+            position: relative;
+            color: #fff;
+            font-size: 2em;
+            z-index: 1;
+            text-shadow: 0 0 5px;
+            text-decoration: none;
+          }
+
+          .box:hover {
+            box-shadow: 0 0 10px var(--bg-btn), 0 0 30px var(--bg-btn),
+              0 0 60px var(--bg-btn), 0 0 100px var(--bg-btn);
+          }
+
+          .box::before {
+            content: "";
+            position: absolute;
+            width: 40vw;
+            height: 6em;
+            background: linear-gradient(#9cebff, #9cebff);
+            animation: animate 5s linear infinite;
+          }
+
+          .box::after {
+            content: "";
+            position: absolute;
+            background: var(--bg-body);
+            inset: 0.3em;
+            border-radius: 1.15em;
+            transition: background 0.5s ease-out;
+          }
+
+          .box:hover::after {
+            inset: 0;
+            background: var(--bg-btn);
+          }
+
+          .box:hover::before {
+            animation-play-state: paused;
+          }
+
+          @keyframes animate {
+            to {
+              transform: rotate(350deg);
+            }
+          }
+        </style>
+        <div class="wrapper astonish animated fadeInDown">
+        <h2 style="font-size: 56pt"><strong>Enroll</strong></h2>
+        </div>
+        <div class="parent">
+          <div class="box green" style="text-decoration: none;">
+            <h2><a href="#">Machine Learning(AI)</a></h2>
+          </div>
+
+          <div class="box red" style="margin-top: 6vh;text-decoration: none;">
+            <h2><a href="#">Python</a></h2>
+          </div>
+        </div>
+
+      </header>
+    </div>
+    <div class="right">
+      <div class="custom-slider">
+        <style>
+            @import url("https://fonts.googleapis.com/css?family=Lora:700");
+            @import url("https://fonts.googleapis.com/css?family=Open+Sans");
+
+            .custom-slider * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                border: 0;
+                font-size: 100%;
+                font: inherit;
+                vertical-align: baseline;
+            }
+
+            .custom-slider ol,
+            .custom-slider ul {
+                list-style: none;
+            }
+
+            .custom-slider table {
+                border-collapse: collapse;
+                border-spacing: 0;
+            }
+
+            .custom-slider caption,
+            .custom-slider th,
+            .custom-slider td {
+                text-align: left;
+                font-weight: normal;
+                vertical-align: middle;
+            }
+
+            .custom-slider q,
+            .custom-slider blockquote {
+                quotes: none;
+            }
+
+            .custom-slider q:before,
+            .custom-slider q:after,
+            .custom-slider blockquote:before,
+            .custom-slider blockquote:after {
+                content: "";
+                content: none;
+            }
+
+            .custom-slider a img {
+                border: none;
+            }
+
+            .custom-slider article {
+                display: block;
+            }
+
+            .custom-slider span {
+                margin: 35px 0 5px;
+                font-size: 26px;
+                font-weight: normal;
+                color: #fff;
+            }
+
+            .custom-slider h1,
+            .custom-slider h2,
+            .custom-slider h3,
+            .custom-slider h4,
+            .custom-slider h5,
+            .custom-slider h6 {
+                font-weight: bold;
+                font-size: 16px;
+                margin: 12px 0;
+            }
+
+            .custom-slider h2 {
+                margin: 40px 0 25px;
+                border-bottom: 1px solid #bbb;
+                padding: 0 0 10px;
+            }
+
+            .custom-slider p {
+                margin: 20px 0 16px;
+            }
+
+            .custom-slider strong {
+                font-weight: bold;
+            }
+
+            .custom-slider label,
+            .custom-slider a {
+                color: brown;
+                cursor: pointer;
+                text-decoration: none;
+                font-style: italic;
+            }
+
+            .custom-slider label:hover,
+            .custom-slider a:hover {
+                color: #ddd !important;
+            }
+
+            .custom-slider label,
+            .custom-slider #active,
+            .custom-slider img {
+                -moz-user-select: none;
+                -webkit-user-select: none;
+            }
+
+            .custom-slider .catch {
+                display: block;
+                height: 0;
+                overflow: hidden;
+            }
+
+            .custom-slider input {
+                display: none;
+            }
+
+            .custom-slider #slide1:checked ~ #slides .inner {
+                margin-left: 0;
+            }
+
+            .custom-slider #slide2:checked ~ #slides .inner {
+                margin-left: -100%;
+            }
+
+            .custom-slider #slide3:checked ~ #slides .inner {
+                margin-left: -200%;
+            }
+
+            .custom-slider #slide4:checked ~ #slides .inner {
+                margin-left: -300%;
+            }
+
+            .custom-slider #slide5:checked ~ #slides .inner {
+                margin-left: -400%;
+            }
+
+            .custom-slider #container {
+                width: 100%;
+                overflow: hidden;
+            }
+
+            .custom-slider article img {
+                width: 100%;
+            }
+
+            .custom-slider #slides .inner {
+                width: 500%;
+                line-height: 0;
+            }
+
+            .custom-slider #slides article {
+                width: 20%;
+                float: left;
+            }
+
+            .custom-slider #commands {
+                margin: -25% 0 0 0;
+                width: 100%;
+                height: 50px;
+            }
+
+            .custom-slider #commands label {
+                display: none;
+                width: 80px;
+                height: 80px;
+                opacity: 0.5;
+            }
+
+            .custom-slider #commands label:hover {
+                opacity: 0.8;
+            }
+
+            .custom-slider #active {
+                position: relative;
+                z-index: 5;
+                margin: 16% 0 0;
+                text-align: center;
+            }
+
+            .custom-slider #active label {
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                background: #bbb;
+            }
+
+            .custom-slider #active label:hover {
+                background: #333;
+                border-color: #777 !important;
+            }
+
+            .custom-slider #slide1:checked ~ #commands label:nth-child(2),
+            .custom-slider #slide2:checked ~ #commands label:nth-child(3),
+            .custom-slider #slide3:checked ~ #commands label:nth-child(4),
+            .custom-slider #slide4:checked ~ #commands label:nth-child(5),
+            .custom-slider #slide5:checked ~ #commands label:nth-child(1) {
+                background: url('https://0.s3.envato.com/files/84450220/img/next.png') no-repeat;
+                float: right;
+                margin: 0 12px 0 0;
+                display: block;
+            }
+
+            .custom-slider #slide1:checked ~ #commands label:nth-child(5),
+            .custom-slider #slide2:checked ~ #commands label:nth-child(1),
+            .custom-slider #slide3:checked ~ #commands label:nth-child(2),
+            .custom-slider #slide4:checked ~ #commands label:nth-child(3),
+            .custom-slider #slide5:checked ~ #commands label:nth-child(4) {
+                background: url('https://0.s3.envato.com/files/84450220/img/previous.png') no-repeat;
+                float: left;
+                margin: 0 0 0 -6px;
+                display: block;
+            }
+
+            .custom-slider #slide1:checked ~ #active label:nth-child(1),
+            .custom-slider #slide2:checked ~ #active label:nth-child(2),
+            .custom-slider #slide3:checked ~ #active label:nth-child(3),
+            .custom-slider #slide4:checked ~ #active label:nth-child(4),
+            .custom-slider #slide5:checked ~ #active label:nth-child(5) {
+                background: #000;
+                opacity: 0.6;
+                border-color: #fff !important;
+                border: 2px solid #fff;
+            }
+
+            .custom-slider .caption {
+                line-height: 20px;
+                margin: 0 0 -150%;
+                position: absolute;
+                padding: 320px 12px;
+                opacity: 0;
+                color: #fff;
+                text-transform: none;
+                font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+                text-align: left;
+                font-size: 18px;
+            }
+
+            .custom-slider .caption bar {
+                display: inline-block;
+                padding: 10px;
+                background: #000;
+                border-radius: 3px;
+                opacity: 0.7;
+            }
+
+            .custom-slider #slides {
+                position: relative;
+                padding: 2px;
+                border: 1px solid #ddd;
+                margin: 45px 0 0;
+                background: #FFF;
+                background: -webkit-linear-gradient(#FFF, #FFF 20%, #EEE 80%, #DDD);
+                background: -moz-linear-gradient(#FFF, #FFF 20%, #EEE 80%, #DDD);
+                background: -ms-linear-gradient(#FFF, #FFF 20%, #EEE 80%, #DDD);
+                background: -o-linear-gradient(#FFF, #FFF 20%, #EEE 80%, #DDD);
+                background: linear-gradient(#FFF, #FFF 20%, #EEE 80%, #DDD);
+                border-radius: 2px;
+                box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+            }
+
+            .custom-slider #slides .inner {
+                transform: translateZ(0);
+                transition: all 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000);
+            }
+
+            .custom-slider #slider {
+                transform: translateZ(0);
+                transition: all 0.5s ease-out;
+            }
+
+            .custom-slider #commands label {
+                transform: translateZ(0);
+                transition: opacity 0.2s ease-out;
+            }
+
+            .custom-slider #slide1:checked ~ #slides article:nth-child(1) .caption,
+            .custom-slider #slide2:checked ~ #slides article:nth-child(2) .caption,
+            .custom-slider #slide3:checked ~ #slides article:nth-child(3) .caption,
+            .custom-slider #slide4:checked ~ #slides article:nth-child(4) .caption,
+            .custom-slider #slide5:checked ~ #slides article:nth-child(5) .caption {
+                opacity: 1;
+                transition: all 1s ease-out 0.6s;
+            }
+
+            .custom-slider #commands,
+            .custom-slider #commands label,
+            .custom-slider #slides,
+            .custom-slider #active,
+            .custom-slider #active label {
+                transform: translateZ(0);
+                transition: all 0.5s ease-out;
+            }
+
+            .custom-slider #slider {
+                max-width: 960px;
+            }
+
+            @media only screen and (max-width: 850px) and (min-width: 450px) {
+                .custom-slider #slider #commands {
+                    margin: -25% 0 0 5%;
+                    width: 90%;
+                    height: 50px;
+                }
+
+                .custom-slider #slider #commands label {
+                    transform: scale(0.9);
+                }
+
+                .custom-slider #slider #slides .caption {
+                    padding: 280px 12px;
+                }
+
+                .custom-slider #slider #slides {
+                    padding: 2px 0;
+                    border-radius: 0;
+                }
+
+                .custom-slider #slider #active {
+                    margin: 15% 0 0;
+                }
+            }
+
+            @media only screen and (max-width: 450px) {
+                .custom-slider #slider #commands {
+                    margin: -28% 0 0 1%;
+                    width: 100%;
+                    height: 70px;
+                }
+
+                .custom-slider #slider #active {
+                    margin: 12% 0 0;
+                }
+
+                .custom-slider #slider #slides {
+                    padding: 2px 0;
+                    border-radius: 0;
+                }
+
+                .custom-slider #slider #slides .caption {
+                    opacity: 0 !important;
+                }
+
+                .custom-slider #slider #commands label {
+                    transform: scale(0.7);
+                }
+            }
+
+            @media only screen and (min-width: 850px) {
+                .custom-slider body {
+                    padding: 0 80px;
+                }
+            }
+        </style>
+        <header>
+        <article id="slider">
+            <input checked type='radio' name='slider' id='slide1' />
+            <input type='radio' name='slider' id='slide2' />
+            <input type='radio' name='slider' id='slide3' />
+            <input type='radio' name='slider' id='slide4' />
+            <input type='radio' name='slider' id='slide5' />
+            <div id="slides">
+                <div id="container">
+                    <div class="inner">
+                        <article>
+                            <img src="http://placehold.it/942X400" />
+                        </article>
+                        <article>
+                            <div class='caption'>
+                                <bar>A Bubble on Flower</bar>
+                            </div>
+                            <img src="https://0.s3.envato.com/files/84450220/img/Dummy1-942X400.jpg" />
+                        </article>
+                        <article>
+                            <div class='caption'>
+                                <bar>A Small Elephant <a href="#">read more</a></bar>
+                            </div>
+                            <img src="https://0.s3.envato.com/files/84450220/img/Dummy2-942X400.jpg" />
+                        </article>
+                        <article>
+                            <div class='caption'>
+                                <bar>A Yellow Flower <a href="#">read more</a></bar>
+                            </div>
+                            <img src="https://0.s3.envato.com/files/84450220/img/Dummy3-942X400.jpg" />
+                        </article>
+                        <article>
+                            <div class='caption'>
+                                <bar>A Pink Flower</bar>
+                            </div>
+                            <img src="https://0.s3.envato.com/files/84450220/img/Dummy4-942X400.jpg" />
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <div id="commands">
+                <label for='slide1'></label>
+                <label for='slide2'></label>
+                <label for='slide3'></label>
+                <label for='slide4'></label>
+                <label for='slide5'></label>
+            </div>
+            <div id="active">
+                <label for='slide1'></label>
+                <label for='slide2'></label>
+                <label for='slide3'></label>
+                <label for='slide4'></label>
+                <label for='slide5'></label>
+            </div>
+        </article>
+      </header>
+    </div>
       </div>
-      <div class="text-section blue_bg">
-        <h2 class="header">And some non work related info?</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipiscing, elit tristique quisque libero mi dis, etiam nascetur dui pulvinar lacinia. Curabitur nam imperdiet volutpat primis sollicitudin venenatis, quam ut dapibus ornare varius rutrum, massa risus sagittis parturient laoreet. Vivamus ultrices ac interdum cras euismod blandit mauris lacinia quisque dictum felis class viverra, risus mi vitae tempor senectus phasellus dui imperdiet ultricies himenaeos aliquet.</p>
-      </div>
-      <div class="text-section white_bg">
-        <h2 class="header">And some non work related info?</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipiscing, elit tristique quisque libero mi dis, etiam nascetur dui pulvinar lacinia. Curabitur nam imperdiet volutpat primis sollicitudin venenatis, quam ut dapibus ornare varius rutrum, massa risus sagittis parturient laoreet. Vivamus ultrices ac interdum cras euismod blandit mauris lacinia quisque dictum felis class viverra, risus mi vitae tempor senectus phasellus dui imperdiet ultricies himenaeos aliquet.</p>
-      </div>
-  </div>
-</section>
+      
+    </div>
+  </section>
   <footer>
     <div class="content-wrapper-sm display-flex-between">
       <!-- Easily replaceble copyright information -->

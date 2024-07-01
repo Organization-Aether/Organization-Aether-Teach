@@ -1,13 +1,12 @@
-body {
-  margin: 0;
-}
-
 .main {
   height: 100vh;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: minmax(150px, auto);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url(https://images.alphacoders.com/104/1046781.jpg) ;
 }
 @media (max-width: 768px) {
   .main {
@@ -20,50 +19,24 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 .main .left img {
   object-fit: cover;
   object-position: center;
   width: 100%;
   height: 100%;
+  background-image: url(https://wallpaperaccess.com/full/1489205.jpg);
 }
 .main .right {
   grid-column: 2/2;
   grid-row: 1/-1;
   height: 100%;
   width: 50vw;
-  background: #e8e0e0;
-  overflow: scroll;
+  background: #000000;
 }
 @media (max-width: 768px) {
   .main .right {
     width: 100%;
   }
 }
-.main .right .header {
-  text-transform: uppercase;
-  font-size: 1.4rem;
-  text-align: left;
-  font-family: "Open Sans";
-}
-.main .right .text-section {
-  padding: 1rem 4rem;
-  text-align: left;
-  margin: 0 auto;
-  min-height: 100vh;
-}
-.main .right .text-section.white_bg {
-  background-color: #fff;
-}
-.main .right .text-section.white_bg strong {
-  color: #2401FE;
-}
-.main .right .text-section.blue_bg {
-  background-color: #2401FE;
-  color: #fff;
-}
-.main .right .text-section p {
-  font: 300 1.2rem "Open Sans", sans-serif;
-}
-
-/*# sourceMappingURL=style.css.map */

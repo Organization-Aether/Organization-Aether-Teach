@@ -38,13 +38,70 @@
       transform: translateY(-5px);
     }
   </style>
+  <style>
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); /* Adjusted for better visibility */
+    border-radius: 10px;
+    background: #1a1a1a; /* Dark background for the container */
+}
+
+.contact-button {
+    background: #000000a1; /* Solid green color */
+    border: 2px solid #FFFFFF; /* White border */
+    color: white;
+    padding: 4vh 15vw;
+    font-size: 20pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 25px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Slight shadow for a 3D effect */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 1px;
+}
+
+.contact-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.15);
+    transition: all 0.6s ease;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+}
+
+.contact-button:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.contact-button:hover {
+    background: #000000be; /* Slightly darker green on hover */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+    transform: translateY(-3px); /* Slight upward movement on hover */
+}
+
+.contact-button:active {
+    transform: translateY(1px); /* Slight downward movement on click */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Reduced shadow on click */
+}
+  </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
   <link rel='stylesheet' href='https://rawgit.com/Jesus-E-Rodriguez/cityscapes-landing-page/master/css/styles.css'>
 
 </head>
-
 <body>
   <!-- partial:index.partial.html -->
   <!-- Main Navigation -->
@@ -62,7 +119,12 @@
       </ul>
     </div>
   </nav>
-<p></p>
+  <header>
+    <img class="img-absolute" src="img\digital-abstract-3d-render-pattern-minimal-art-black-2560x1080-7124.jpg" alt="City 1">
+    <div class="wrapper astonish animated fadeInDown">
+      <a href="" style="text-decoration: none;color: white;"><button class="contact-button">Contact</button></a>
+</div>
+</header>
 
   <footer>
     <div class="content-wrapper-sm display-flex-between">
