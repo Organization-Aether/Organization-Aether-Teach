@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <style>
+        /* CSS for styling the board */
+        canvas {
+            border: 1px solid #000;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tic Tac Toe</h1>
+    <canvas id="board" width="300" height="300"></canvas>
+    <br>
+    <button onclick="resetGame()">Reset Game</button>
+    <button><a href="https://replit.com/@aetherorganizat/TICTACTOE">Raw Student Version</a></button>
+    <script>
+        const canvas = document.getElementById('board');
+        const ctx = canvas.getContext('2d');
+        const cellSize = 100; // Cell dimensions
+
+        let board = [[" ", " ", " "],
+                     [" ", " ", " "],
+                     [" ", " ", " "]];
+
+        function drawBoard() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.beginPath();
+
+            // Draw grid lines
+            for (let i = 1; i < 3; i++) {
+                ctx.moveTo(i * cellSize, 0);
+                ctx.lineTo(i * cellSize, canvas.height);
+                ctx.moveTo(0, i * cellSize);
+                ctx.lineTo(canvas.width, i * cellSize);
+            }
+            ctx.stroke();
+
+            // Draw X and O based on board state
+            for (let row = 0; row < 3; row++) {
+                for (let col = 0; col < 3; col++) {
+                    const cell = board[row][col];
+                    if (cell === 'X') {
+                        drawX(row, col);
+                    } else if (cell === 'O') {
+                        drawO(row, col);
+                    }
+                }
+            }
+
+            // Check and draw winning line if any
+            const winner = checkWinner();
+            if (winner) {
+                const { direction, line } = winner;
+                const startX = line[0][1] * cellSize + cellSize / 2;
+                const startY = line[0][0] * cellSize + cellSize / 2;
+                const endX = line[2][1] * cellSize + cellSize / 2;
+                const endY = line[2][0] * cellSize + cellSize / 2;
+
+                ctx.beginPath();
+                ctx.moveTo(startX, startY);
+                ctx.lineTo(endX, endY);
+                ctx.stroke();
+            }
+        }
+
+        function drawX(row, col) {
+            ctx.beginPath();
+            ctx.moveTo(col * cellSize + 10, row * cellSize + 10);
+            ctx.lineTo((col + 1) * cellSize - 10, (row + 1) * cellSize - 10);
+            ctx.moveTo((col + 1) * cellSize - 10, row * cellSize + 10);
+            ctx.lineTo(col * cellSize + 10, (row + 1) * cellSize - 10);
+            ctx.stroke();
+        }
+
+        function drawO(row, col) {
+            ctx.beginPath();
+            ctx.arc(col * cellSize + cellSize / 2, row * cellSize + cellSize / 2, cellSize / 2 - 10, 0, Math.PI * 2);
+            ctx.stroke();
+        }
+
+        function userMove(event) {
+            const rect = canvas.getBoundingClientRect();
+            const x = Math.floor((event.clientX - rect.left) / cellSize);
+            const y = Math.floor((event.clientY - rect.top) / cellSize);
+
+            if (board[y][x] === " ") {
+                board[y][x] = 'X';
+                drawBoard();
+
+                if (checkWinner()) {
+                    setTimeout(() => {
+                        alert("You win!");
+                        resetGame();
+                    }, 100); // Delay alert for visual clarity
+                } else if (isFull()) {
+                    setTimeout(() => {
+                        alert("Draw!");
+                        resetGame();
+                    }, 100); // Delay alert for visual clarity
+                } else {
+                    setTimeout(computerMove, 500); // Delay computer move for visual clarity
+                }
+            }
+        }
+
+        function computerMove() {
+            let move = bestMove();
+            board[move[0]][move[1]] = 'O';
+            drawBoard();
+
+            if (checkWinner()) {
+                setTimeout(() => {
+                    alert("Computer wins!");
+                    resetGame();
+                }, 100); // Delay alert for visual clarity
+            } else if (isFull()) {
+                setTimeout(() => {
+                    alert("Draw!");
+                    resetGame();
+                }, 100); // Delay alert for visual clarity
+            }
+        }
+
+        function isFull() {
+            return board.every(row => row.every(cell => cell !== " "));
+        }
+
+        function checkWinner() {
+            // Check rows
+            for (let row = 0; row < 3; row++) {
+                if (board[row][0] !== " " && board[row][0] === board[row][1] && board[row][1] === board[row][2]) {
+                    return { direction: "horizontal", line: [[row, 0], [row, 1], [row, 2]] };
+                }
+            }
+            // Check columns
+            for (let col = 0; col < 3; col++) {
+                if (board[0][col] !== " " && board[0][col] === board[1][col] && board[1][col] === board[2][col]) {
+                    return { direction: "vertical", line: [[0, col], [1, col], [2, col]] };
+                }
+            }
+            // Check diagonals
+            if (board[0][0] !== " " && board[0][0] === board[1][1] && board[1][1] === board[2][2]) {
+                return { direction: "diagonal", line: [[0, 0], [1, 1], [2, 2]] };
+            }
+            if (board[0][2] !== " " && board[0][2] === board[1][1] && board[1][1] === board[2][0]) {
+                return { direction: "diagonal", line: [[0, 2], [1, 1], [2, 0]] };
+            }
+            return null;
+        }
+
+        function bestMove() {
+            let bestScore = -Infinity;
+            let move = null;
+            for (let row = 0; row < 3; row++) {
+                for (let col = 0; col < 3; col++) {
+                    if (board[row][col] === " ") {
+                        board[row][col] = 'O';
+                        let score = minimax(board, false);
+                        board[row][col] = " ";
+                        if (score > bestScore) {
+                            bestScore = score;
+                            move = [row, col];
+                        }
+                    }
+                }
+            }
+            return move;
+        }
+
+        function minimax(board, isMaximizing) {
+            if (checkWinner()) {
+                return isMaximizing ? -1 : 1;
+            }
+            if (isFull()) {
+                return 0;
+            }
+
+            if (isMaximizing) {
+                let bestScore = -Infinity;
+                for (let row = 0; row < 3; row++) {
+                    for (let col = 0; col < 3; col++) {
+                        if (board[row][col] === " ") {
+                            board[row][col] = 'O';
+                            let score = minimax(board, false);
+                            board[row][col] = " ";
+                            bestScore = Math.max(score, bestScore);
+                        }
+                    }
+                }
+                return bestScore;
+            } else {
+                let bestScore = Infinity;
+                for (let row = 0; row < 3; row++) {
+                    for (let col = 0; col < 3; col++) {
+                        if (board[row][col] === " ") {
+                            board[row][col] = 'X';
+                            let score = minimax(board, true);
+                            board[row][col] = " ";
+                            bestScore = Math.min(score, bestScore);
+                        }
+                    }
+                }
+                return bestScore;
+            }
+        }
+
+        function resetGame() {
+            board = [[" ", " ", " "],
+                     [" ", " ", " "],
+                     [" ", " ", " "]];
+            drawBoard();
+        }
+
+        canvas.addEventListener('click', userMove);
+        drawBoard();
+    </script>
+</body>
+</html>
