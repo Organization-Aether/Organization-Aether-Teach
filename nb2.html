@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOLO Object Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        h1, h2 {
+            color: #444;
+        }
+        code {
+            background-color: #272822;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        pre {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .code-snippet {
+            margin: 10px 0;
+        }
+        .result-image, .result-video {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>YOLO Object Detection</h1>
+        
+        <div class="section">
+            <h2>What is Object Detection?</h2>
+            <p>Object detection is a computer vision technique used to identify and locate objects within an image or video. This technique allows machines to recognize and detect various objects, such as people, cars, animals, and more, within their surroundings.</p>
+        </div>
+        
+        <div class="section">
+            <h2>What is YOLO?</h2>
+            <p>YOLO (You Only Look Once) is a state-of-the-art, real-time object detection system. It divides images into a grid and predicts bounding boxes and probabilities for each region. YOLO is known for its speed and accuracy, making it ideal for real-time applications.</p>
+        </div>
+        
+        <div class="section">
+            <h2>How YOLO Works</h2>
+            <p>YOLO works by dividing an image into a grid and predicting bounding boxes and probabilities for each grid cell. It uses a single neural network to process the entire image, making it faster than other object detection models.</p>
+            <div class="code-snippet">
+                <pre><code># Load YOLO
+net = cv2.dnn.readNet("yolov3.weights", "yolov3.cfg")
+
+# Load class names
+classes = []
+with open("coco.names", "r") as f:
+    classes = [line.strip() for line in f.readlines()]
+                </code></pre>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Example Code Snippets</h2>
+            <h3>Object Detection in Images</h3>
+            <div class="code-snippet">
+                <pre><code>def detect_objects(image):
+    blob = cv2.dnn.blobFromImage(image, 1/255.0, (416, 416), swapRB=True, crop=False)
+    net.setInput(blob)
+    outputs = net.forward(net.getUnconnectedOutLayersNames())
+    # Process detections...
+                </code></pre>
+            </div>
+            <h3>Object Detection in Videos</h3>
+            <div class="code-snippet">
+                <pre><code>def handle_upload():
+    cap = cv2.VideoCapture(filename)
+    while True:
+        ret, frame = cap.read()
+        if not ret:
+            break
+        frame_with_boxes = detect_objects(frame)
+        out.write(frame_with_boxes)
+                </code></pre>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Result Images</h2>
+            <p>Here are the images with detected objects:</p>
+            <img id="resultImage1" class="result-image" src="img/trafic.jpg" alt="Detected objects">
+            <img id="resultImage2" class="result-image" src="img/betterTrafic.png" alt="Detected objects">
+        </div>
+        
+        <div class="section">
+            <h2>Result Video</h2>
+            <p>Here is the video with detected objects:</p>
+            <video id="resultVideo" class="result-video" controls>
+                <source src="img/Vid1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            
+            <video id="resultVideo" class="result-video" controls>
+                <source src="img/Vid2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+</body>
+</html>
