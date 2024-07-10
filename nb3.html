@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Learning Models for Lung Cancer Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        h1, h2 {
+            color: #444;
+        }
+        code {
+            background-color: #272822;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        pre {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .code-snippet {
+            margin: 10px 0;
+        }
+        .result-image, .result-video {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Machine Learning Models for Lung Cancer Prediction</h1>
+        
+        <div class="section">
+            <h2>Decision Trees</h2>
+            <p>A decision tree is a flowchart-like structure where each internal node represents a feature (or attribute), the branch represents a decision rule, and each leaf node represents the outcome. The model splits the dataset into smaller subsets while at the same time developing an associated decision tree incrementally.</p>
+            <img src="img/tree.png" alt="Confusion Matrix" class="result-image">
+ 
+        </div>
+        
+        <div class="section">
+            <h2>Random Forest</h2>
+            <p>A random forest is an ensemble learning method that combines multiple decision trees to improve the overall performance. Each tree is trained on a random subset of the data, and the final prediction is made by averaging the predictions of all individual trees. This method reduces the risk of overfitting and improves accuracy.</p>
+            <img src="img/forest.png" alt="Confusion Matrix" class="result-image">
+ 
+        
+        </div>
+        
+        <div class="section">
+            <h2>Support Vector Machine (SVM)</h2>
+            <p>A support vector machine (SVM) is a supervised learning model that finds the optimal hyperplane to classify data points in a high-dimensional space. SVMs are effective in high-dimensional spaces and are versatile with different kernel functions for nonlinear classification.</p>
+        </div>
+
+        <div class="section">
+            <h2>SVM Implementation</h2>
+            <p>The following SVM implementation uses a grid search with cross-validation to find the best hyperparameters:</p>
+            <div class="code-snippet">
+                <pre><code>from sklearn.svm import SVC
+from sklearn.model_selection import GridSearchCV, StratifiedKFold
+
+param_grid = {
+    'C': [0.1, 1, 10, 100, 1000],
+    'gamma': [1, 0.1, 0.01, 0.001, 0.0001],
+    'kernel': ['linear', 'poly', 'rbf', 'sigmoid']
+}
+
+cv = StratifiedKFold(n_splits=10, shuffle=True, random_state=42)
+grid_search = GridSearchCV(SVC(), param_grid, cv=cv, scoring='accuracy', verbose=2, n_jobs=-1)
+grid_search.fit(X_train, y_train)
+
+best_svc = grid_search.best_estimator_
+y_pred_best = best_svc.predict(X_test)</code></pre>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>SVM Results</h2>
+            <p>The SVM model provided the following results:</p>
+            <pre><code>Classification Report:
+               precision    recall  f1-score   support
+
+           0       0.71      0.62      0.67         8
+           1       0.95      0.96      0.95        54
+
+    accuracy                           0.92        62
+   macro avg       0.83      0.79      0.81        62
+weighted avg       0.92      0.92      0.92        62
+
+Confusion Matrix:
+ [[ 5  3]
+ [ 2 52]]</code></pre>
+            <p>The classification report shows the precision, recall, and f1-score for each class:</p>
+            <ul>
+                <li><strong>Precision</strong>: The proportion of true positives among all positive predictions. Higher precision means fewer false positives.</li>
+                <li><strong>Recall</strong>: The proportion of true positives among all actual positives. Higher recall means fewer false negatives.</li>
+                <li><strong>F1-Score</strong>: The harmonic mean of precision and recall, providing a balance between the two.</li>
+                <li><strong>Accuracy</strong>: The overall proportion of correctly classified instances. Here, it is 92%, indicating the model's effectiveness.</li>
+            </ul>
+            <p>The confusion matrix provides a detailed breakdown of the true positive, false positive, true negative, and false negative predictions:</p>
+            <ul>
+                <li><strong>True Positives (TP)</strong>: The number of correctly predicted positive cases (52).</li>
+                <li><strong>False Positives (FP)</strong>: The number of incorrectly predicted positive cases (3).</li>
+                <li><strong>True Negatives (TN)</strong>: The number of correctly predicted negative cases (5).</li>
+                <li><strong>False Negatives (FN)</strong>: The number of incorrectly predicted negative cases (2).</li>
+            </ul>
+            <img src="img/cm.png" alt="Confusion Matrix" class="result-image">
+            
+        </div>
+        <button><a href="enroll.html">return</a></button>
+        <button><a href="https://colab.research.google.com/drive/1MNXcP_3ZYfeei8soZZ_A0NUuL-Qx3-mL?authuser=2#scrollTo=Q94I4BDa5t2w">raw Student Code</a></button>
+
+    </div>
+</body>
+</html>
