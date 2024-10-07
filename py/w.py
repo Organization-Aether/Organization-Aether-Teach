@@ -26,11 +26,13 @@ while True:
     # Render the results on the frame
     results.render()
 
-    # Save the frame with detection results
-    out.write(frame)
+    # The `results.render()` function modifies the image in place,
+    # so we use the updated frame for both saving and displaying
+    out.write(frame)  # Save the frame with detection results
 
     # Display the frame
     cv2.imshow('YOLO Object Detection', frame)
+    
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 

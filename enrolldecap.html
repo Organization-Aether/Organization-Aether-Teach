@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Aether Learning</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet" href="https://rawgit.com/Jesus-E-Rodriguez/cityscapes-landing-page/master/css/styles.css">
+  <!-- Include Owl Carousel CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+  <style>
+    /* If you wish to remove the astonish.js file, then also be sure to remove these styles. */
+    .astonish {
+      visibility: visible;
+    }
+
+    @media (min-width: 768px) {
+      .astonish {
+        visibility: hidden;
+      }
+
+      .animated {
+        visibility: visible;
+      }
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      padding: 10px;
+      margin: 5px 0;
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    li:hover {
+      transform: translateY(-5px);
+    }
+
+    * {
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 200px;
+      width: 300px;
+      box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+      /* Adjusted for better visibility */
+      border-radius: 10px;
+      background: #1a1a1a;
+      /* Dark background for the container */
+    }
+
+    .contact-button {
+      background: #000000a1;
+      /* Solid green color */
+      border: 2px solid #FFFFFF;
+      /* White border */
+      color: white;
+      padding: 3vh 5vw;
+      font-size: 20pt;
+      font-weight: bold;
+      text-transform: uppercase;
+      border-radius: 25px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      margin-top: 4vh;
+      /* Slight shadow for a 3D effect */
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      letter-spacing: 1px;
+    }
+
+    .contact-button::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300%;
+      height: 300%;
+      background: rgba(255, 255, 255, 0.15);
+      transition: all 0.6s ease;
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(0);
+    }
+
+    .contact-button:hover::before {
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .contact-button:hover {
+      background: #000000be;
+      /* Slightly darker green on hover */
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+      /* Enhanced shadow on hover */
+      transform: translateY(-3px);
+      /* Slight upward movement on hover */
+    }
+
+    .contact-button:active {
+      transform: translateY(1px);
+      /* Slight downward movement on click */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      /* Reduced shadow on click */
+    }
+
+    /* Additional styles for the carousel */
+    .custom-carousel .item {
+      background-size: cover;
+      background-position: center;
+      height: 400px;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.4s ease-in-out;
+    }
+
+    .custom-carousel .item-desc {
+      padding: 20px;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      transition: all 0.4s ease-in-out;
+    }
+
+    .custom-carousel .item-desc h3 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .custom-carousel .item-desc p {
+      margin: 10px 0 0;
+    }
+
+    .game-section {
+      padding: 60px 50px;
+    }
+
+    .line-title {
+      margin-bottom: 48px;
+      padding-bottom: 16px;
+      font-size: 20px;
+      line-height: 28px;
+      font-weight: 700;
+      position: relative;
+      text-transform: capitalize;
+    }
+
+    .line-title::before,
+    .line-title::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 4px;
+      border-radius: 2px;
+    }
+
+    .line-title::before {
+      width: 100%;
+      background: #f2f2f2;
+    }
+
+    .line-title::after {
+      width: 32px;
+      background: #e73700;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- partial:index.partial.html -->
+  <!-- Main Navigation -->
+  <nav class="main-nav" id="main-nav">
+    <div class="content-wrapper-sm">
+      <a href="index.html" class="navbar-brand">Aether</a>
+      <div id="menu-button">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="enroll.html">Enroll</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main header -->
+  <header style="height: 60vh;">
+    <img class="img-absolute" src="img\450678-black-dark-texture.jpg" style="" alt="City 1">
+    <div class="wrapper astonish animated fadeInDown">
+      <h1><strong>enroll</strong></h1>
+    </div>
+
+    <div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSc5z41cFIpqWNM4sOkXFPCCyK1FhW4daD4M0jMoGHd49uW2qg/viewform?usp=sf_link" style="text-decoration: none;color: white; margin-left: 1vw; margin-right: 1vw;"><button class="contact-button">Python</button></a>
+      
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSc5z41cFIpqWNM4sOkXFPCCyK1FhW4daD4M0jMoGHd49uW2qg/viewform?usp=sf_link" style="text-decoration: none;color: white; margin-left: 1vw; margin-right: 1vw;"><button class="contact-button">Machine Learning</button></a>
+    </div>
+  </header>
+
+  <!-- CAROSOUL GOES HERE -->
+  <section class="game-section">
+    <h2 class="line-title">Student Projects</h2>
+    <div class="owl-carousel custom-carousel owl-theme">
+      <a href="nb2.html"><div class="item" style="background-image: url(https://deeplobe.ai/wp-content/uploads/2023/06/Object-detection-Real-world-applications-and-benefits.png);">
+        <div class="item-desc">  
+          <h3>Object Detection (AI)</h3>
+          <p>We employed machine learning (YOLO model) to perform object detection on user-uploaded images and videos, enhancing them with bounding boxes for object identification, and providing a downloadable processed video </p>
+        </div>
+      </div></a>
+      <a href="https://colab.research.google.com/drive/1pqsfxCzFMFcwTUwg7cBTAcdKxgXR23MP?authuser=2"><div class="item" style="background-image: url(https://elearningindustry.com/wp-content/uploads/2022/06/shutterstock_2081153782.jpg);">
+        <div class="item-desc">
+          <h3>Story game (py)</h3>
+          <p>A choose your own adventure game where a wrong decision could lead to your doom. This game utilizes a sorting system and user inputs in order to send different messeges and options to the player</p>
+        </div>
+      </div></a>
+      <a href="nb1.html"><div class="item" style="background-image: url(https://static3.depositphotos.com/1003374/160/i/450/depositphotos_1602945-stock-photo-tic-tac-toe.jpg);">
+        <div class="item-desc">
+          <h3>Tic Tac Toe (py)</h3>
+          <p> TIC TAC TOE, but your advessary is the computer itself. This game uses a coulumn and row based grid in order to play the game. A min-max algorithim determines the best move for the computer to win</p>
+        </div>
+      </div></a>
+      <a href="nb3.html"> <div class="item" style="background-image: url(https://www.mdanderson.org/content/mda/en/cancerwise/2014/10/what-to-know-about-lung-cancer-screening-treatment-and-research/jcr:content/blog/adaptiveimage.resize.278.0.medium.jpg/1503353156795.jpg);">
+        <div class="item-desc">
+          <h3>Lung Cancer Detection (AI)</h3>
+          <p>We used Medical data to predict the chance of lung cancer in patients. We used multiple ML models including Rand Forest, Decision Trees, and SVM for the a 92% average prediction to see if person has cancer or not.</p>
+        </div>
+      </div></a>
+      <div class="item" style="background-image: url(https://wallpapers.com/images/featured/white-abstract-jcss6s6ijvfkpr5z.jpg);">
+        <div class="item-desc">
+          <h3>Coming Soon</h3>
+          <p></p>
+        </div>
+      </div>
+       <div class="item" style="background-image: url(https://wallpapers.com/images/featured/white-abstract-jcss6s6ijvfkpr5z.jpg);">
+        <div class="item-desc">
+          <h3>Coming Soon</h3>
+          <p></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main footer -->
+  <footer>
+    <div class="content-wrapper-sm display-flex-between">
+      <!-- Easily replaceble copyright information -->
+      <small> All rights Reserved © 2024 Team Aether</small>
+
+      <!-- Make sure to edit the links so that they go to your social media. -->
+      <div class="social-links">
+        <ul>
+          <!-- <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+          <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+          <li><a href="#"><i class="fa fa-snapchat-square" aria-hidden="true"></i></a></li>
+          <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> -->
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Include jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Include Owl Carousel JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $(".custom-carousel").owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        dots: true,
+        responsive: {
+          0: {
+            items: 1
+          },
+          600: {
+            items: 3
+          },
+          1000: {
+            items: 5
+          }
+        }
+      });
+
+      $(".custom-carousel .item").click(function () {
+        $(".custom-carousel .item").not($(this)).removeClass("active");
+        $(this).toggleClass("active");
+      });
+    });
+  </script>
+  <script src='https://rawgit.com/Jesus-E-Rodriguez/cityscapes-landing-page/master/js/astonish.js'></script>
+  <script src='https://rawgit.com/Jesus-E-Rodriguez/cityscapes-landing-page/master/js/menu.js'></script>
+  <script src='https://rawgit.com/Jesus-E-Rodriguez/cityscapes-landing-page/master/js/nav.js'></script>
+  <script src='https://rawgit.com/Jesus-E-Rodriguez/cityscapes-landing-page/master/js/scroll.js'></script>
+</body>
+
+</html>
