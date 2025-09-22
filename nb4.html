@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Titanic Survival Research — Explanation</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      margin: 40px 80px; /* wider margins */
+      line-height: 1.55;
+    }
+    h1, h2 { margin: 0 0 12px; }
+    p { margin: 6px 0 12px; }
+    .card { border: 1px solid #000; padding: 14px; margin: 20px 0; }
+    table { border-collapse: collapse; width: 100%; margin: 8px 0; }
+    th, td { border: 1px solid #000; padding: 6px 10px; text-align: left; }
+    th { background: #f3f3f3; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .muted { opacity: .8; font-size: 13px; }
+    .footer { margin-top: 24px; text-align: center; }
+    button { padding: 8px 14px; cursor: pointer; }
+    a { text-decoration: none; color: inherit; }
+    .student { margin-top: 30px; font-weight: bold; text-align: right; }
+  </style>
+</head>
+<body>
+  <h1>Titanic Survival Research</h1>
+
+  <div class="card">
+    <h2>Overview</h2>
+    <p>
+      The Titanic dataset is one of the most widely studied beginner machine learning challenges.
+      The task is to predict whether a passenger survived the disaster based on attributes like class,
+      sex, age, family size, fare, and port of embarkation. This summary explains how the dataset is
+      structured, what preprocessing is done, what model is used, and how to interpret the results.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Dataset Features</h2>
+    <table>
+      <thead><tr><th>Feature</th><th>Meaning</th><th>Used?</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">Survived</td><td>Target variable (1=survived, 0=not)</td><td>Target</td></tr>
+        <tr><td class="mono">Pclass</td><td>Ticket class (1=First, 3=Third)</td><td>Yes</td></tr>
+        <tr><td class="mono">Sex</td><td>Male or Female</td><td>Yes</td></tr>
+        <tr><td class="mono">Age</td><td>Age in years</td><td>Yes</td></tr>
+        <tr><td class="mono">SibSp</td><td># of siblings/spouses aboard</td><td>Yes</td></tr>
+        <tr><td class="mono">Parch</td><td># of parents/children aboard</td><td>Yes</td></tr>
+        <tr><td class="mono">Fare</td><td>Ticket fare</td><td>Yes</td></tr>
+        <tr><td class="mono">Embarked</td><td>Port of embarkation (S, C, Q)</td><td>Yes</td></tr>
+        <tr><td class="mono">Name, Cabin, Ticket, PassengerId</td><td>Identifiers/non-predictive</td><td>No</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>Preprocessing Steps</h2>
+    <table>
+      <thead><tr><th>Step</th><th>Action</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td>Drop unused fields</td><td>Name, Cabin, Ticket, PassengerId</td><td>Not useful for prediction</td></tr>
+        <tr><td>Handle missing</td><td>Drop or impute rows with missing values</td><td>Clean data for training</td></tr>
+        <tr><td>Encode categories</td><td>Sex → 0/1; Embarked → numeric codes</td><td>Convert to numeric</td></tr>
+        <tr><td>Scale features</td><td>Standardize values (optional)</td><td>Stabilizes training</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>Model Used</h2>
+    <p>
+      This project uses a <b>Logistic Regression model</b>. Logistic regression is a simple but powerful
+      classification algorithm. It works by fitting a linear combination of the input features and applying
+      the <span class="mono">sigmoid</span> function to output a probability between 0 and 1.
+    </p>
+    <p>
+      The training process adjusts the weights so that the predicted probabilities best match the actual
+      survival outcomes. Logistic regression is chosen here because:
+    </p>
+    <ul>
+      <li>It is <b>interpretable</b> — each weight shows how strongly a feature impacts survival odds.</li>
+      <li>It is <b>lightweight</b> and easy to run even on small devices or static sites.</li>
+      <li>It provides <b>probabilities</b> instead of just yes/no predictions.</li>
+    </ul>
+    <p>
+      More advanced models like Random Forests or Neural Networks can also be used, but logistic regression
+      remains popular for explaining results to new learners because of its clarity.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Example Coefficients (Illustrative)</h2>
+    <table>
+      <thead><tr><th>Feature</th><th>Coefficient</th><th>Interpretation</th></tr></thead>
+      <tbody>
+        <tr><td>Pclass</td><td class="mono">-1.10</td><td>Lower classes decrease survival odds</td></tr>
+        <tr><td>Sex = female</td><td class="mono">+2.70</td><td>Being female strongly increases odds</td></tr>
+        <tr><td>Age</td><td class="mono">-0.03 per year</td><td>Older age slightly reduces odds</td></tr>
+        <tr><td>SibSp</td><td class="mono">-0.35 per person</td><td>Large groups reduce odds</td></tr>
+        <tr><td>Parch</td><td class="mono">-0.10 per person</td><td>More dependents reduce odds</td></tr>
+        <tr><td>Fare</td><td class="mono">+0.015 per unit</td><td>Higher fare slightly increases odds</td></tr>
+        <tr><td>Embarked=C</td><td class="mono">+0.25</td><td>Cherbourg passengers had higher odds</td></tr>
+      </tbody>
+    </table>
+    <p class="muted">Coefficients above are illustrative; actual numbers depend on the trained dataset split.</p>
+  </div>
+
+  <div class="card">
+    <h2>Key Insights</h2>
+    <table>
+      <thead><tr><th>Factor</th><th>Effect</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Sex</td><td>Women had much higher survival</td><td>“Women and children first” policy</td></tr>
+        <tr><td>Passenger Class</td><td>1st > 2nd > 3rd</td><td>Location/access to lifeboats</td></tr>
+        <tr><td>Age</td><td>Younger better</td><td>Children prioritized</td></tr>
+        <tr><td>Fare</td><td>Higher fare helped</td><td>Proxy for cabin location/status</td></tr>
+        <tr><td>Family Size</td><td>Large families lower odds</td><td>Harder to evacuate together</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer">
+    <button><a href="enroll.html">return</a></button>
+    <div class="student">Prepared by: Jessica Owens</div>
+  </div>
+</body>
+</html>
